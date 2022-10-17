@@ -1,0 +1,10 @@
+# Facebook dns request
+alert dns any any -> any any (msg:"su"; dns.query; content: "facebook"; sid: 1003; rev:1;)
+# Facebook certificate
+#nie dziaa tls.sni content:facebook
+#DNS domain with .su suffix
+alert dns any any -> any any (msg:"su"; dns.query; content:".su"; endswith; sid: 1002; rev:1;)
+# DNS zone transfer 
+alert dns any any -> any any (msg:"su"; content: "|00 fc|"; sid: 1003; rev:1;)
+#Detection of popular default user-agents (use curl -A): http.user_agent; content: python nocase
+alert http any any -> any any (msg:"su"; dns.query; content:".su"; endswith; sid: 1004; rev:1;)
