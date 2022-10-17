@@ -8,3 +8,6 @@ alert dns any any -> any any (msg:"su"; dns.query; content:".su"; endswith; sid:
 alert dns any any -> any any (msg:"su"; content: "|00 fc|"; sid: 1003; rev:1;)
 #Detection of popular default user-agents (use curl -A): http.user_agent; content: python nocase
 alert http any any -> any any (msg:"su"; dns.query; content:".su"; endswith; sid: 1004; rev:1;)
+# visual studio code: suricata highlight, suricata intelliSense
+# instalowanie pip install suricata-languge-server
+# https://github.com/ccdcoe/CDMCS/tree/master/Suricata/intro
