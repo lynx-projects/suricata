@@ -7,9 +7,10 @@ alert dns any any -> any any (msg:"DNS domain with .su suffix"; dns.query; conte
 # DNS zone transfer 
 alert dns any any -> any any (msg:"DNS zone transfer"; content: "|00fc|"; sid: 1003; rev:1;)
 #Detection of popular default user-agents (use curl -A): http.user_agent; content: python nocase
-alert http any any -> any any (msg:"Default user-agents"; content:"python"; http.user_agent; sid: 1004; rev:1;)
+alert http any any -> any any (msg:"Default user-agents"; content:"python"; nocase; http_user_agent; sid: 1004; rev:1;)
 
 # visual studio code: suricata highlight, suricata intelliSense
 # instalowanie pip install suricata-languge-server
 # https://github.com/ccdcoe/CDMCS/tree/master/Suricata/intro
 # suricata -S ../Suricata/rules/custom.rules -r full.pcap -l logs-4 -vvv -k none
+# tcpdump  -i eno1 -w /home/student/CDMCS/data/suDNS.pcap
